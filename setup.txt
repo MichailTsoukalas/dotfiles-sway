@@ -40,11 +40,7 @@ INSTALL NVM
 	restart terminal
 	run $nvm install --lts
 
-
-
-
-
-AUDIO FIRMWARE INSTALLATION
+AUDIO FIRMWARE INSTALLATION FOR CREATIVE SOUNDBLASTER Z (CA0132)
 	grab latest alsa-firmware-x.x.x.tar.bz2 from https://www.alsa-project.org/files/pub/firmware/
 	run $apt install build-essential
 	extract alsa-firmware.tar
@@ -55,10 +51,5 @@ AUDIO FIRMWARE INSTALLATION
 
 #todos
 fonts -- mostly done, font management app?
-vscode
-docker desktop
+docker desktop -- fix duplicating waybar on launch, somehow.
 
-edit mako
-edit kitty
-
-export dotfiles to git

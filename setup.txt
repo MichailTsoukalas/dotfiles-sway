@@ -1,0 +1,63 @@
+SETUP LOG
+	install debian 12 minimal - uncheck everything in desktop selection during installation
+
+SETUP REPOSITORIES
+	$nano /etc/apt/sources.list
+	append  "non-free contrib" for "bookworm", "bookworm-security" and "bookworm-updates"
+
+INSTALL SWAY VIA SCRIPT
+	run $apt install git
+	run $git clone https://github.com/drewgrif/scripts
+	run $nano sway.sh
+	configure to spec (i.e. "ly" display manager not needed)
+	run $./sway.sh
+
+CONFIG SWAY TO START ON TTY LOGIN
+	run $touch ~/.bash_profile
+	append: [ "$(tty)" = "/dev/tty1" ] to .bash_profile && exec sway
+
+INSTALL APPLICATIONS
+	run $apt install firefox-esr pavucontrol gh alsa-utils curl vlc playerctl ttf-mscorefonts-installer fonts-roboto fonts-ubuntu libnotify-bin flatpak
+	run $flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+INSTALL NWG-LOOK
+	run $apt install golang libglib2.0-dev libcairo2-dev libwebkit2gtk-4.0-dev
+	run $git clone git@github.com:nwg-piotr/nwg-look.git
+	run $cd nwg-look
+	run $make-build
+	wait
+	run $sudo make install
+
+SETUP STARSHIP PROMPT
+	run $curl -sS https://starship.rs/install.sh | sh
+	run $nano .bashrc
+	append eval "$(starship init bash)"
+	save https://starship.rs/presets/toml/plain-text-symbols.toml to ~/.config as "starship.toml"
+
+INSTALL NVM
+	run $curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+	restart terminal
+	run $nvm install --lts
+
+
+
+
+
+AUDIO FIRMWARE INSTALLATION
+	grab latest alsa-firmware-x.x.x.tar.bz2 from https://www.alsa-project.org/files/pub/firmware/
+	run $apt install build-essential
+	extract alsa-firmware.tar
+	run $./configure
+	run $make
+	run $cp alsa-firmware-x.x.x/ca0132/ctefx-desktop.bin /usr/lib/firmware
+	run $sudo reboot now
+
+#todos
+fonts -- mostly done, font management app?
+vscode
+docker desktop
+
+edit mako
+edit kitty
+
+export dotfiles to git

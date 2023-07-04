@@ -1,0 +1,11 @@
+font=monospace 10
+background-color=#212121
+text-color=#ffffff
+border-color=#A80030
+width=600
+height=200
+
+
+[urgency=high]
+text-color=#CD3F45
+

@@ -1,0 +1,6 @@
+mode=drun
+width=25%
+matching=multi-contains
+insensitive=true
+display_generic=true
+prompt=Search...

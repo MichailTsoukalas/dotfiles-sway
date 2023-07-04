@@ -4,6 +4,7 @@ SETUP LOG
 SETUP REPOSITORIES
 	$nano /etc/apt/sources.list
 	append  "non-free contrib" for "bookworm", "bookworm-security" and "bookworm-updates"
+	OPTIONAL : replace bookworm with testing for more up to date packages.
 
 INSTALL SWAY VIA SCRIPT
 	run $apt install git
